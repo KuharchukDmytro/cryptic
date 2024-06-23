@@ -1,0 +1,8 @@
+@import "@/styles/colors.scss";
+@import "@/styles/variables.scss";
+
+.main_sidebar {
+  width: $main-sidebar-width;
+  height: 100vh;
+  background-color: var(--white);
+}

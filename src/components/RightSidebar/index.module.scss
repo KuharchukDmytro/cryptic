@@ -1,0 +1,8 @@
+@import '@/styles/variables.scss';
+@import '@/styles/colors.scss';
+
+.right_sidebar {
+  width: $right-sidebar-width;
+  height: 100vh;
+  background-color: var(--white);
+}

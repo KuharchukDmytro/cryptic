@@ -1,3 +1,8 @@
+import { FlexContainer } from '../common';
+import styles from './index.module.scss';
+
 export const RightSidebar = () => {
-  return <div>RightSidebar</div>;
+  return (
+    <FlexContainer className={styles.right_sidebar}>RightSidebar</FlexContainer>
+  );
 };
