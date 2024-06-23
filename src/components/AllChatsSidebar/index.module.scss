@@ -1,0 +1,7 @@
+@import '@/styles/typography.scss';
+
+.all_chats_sidebar {
+  &__title {
+    @extend %h3;
+  }
+}

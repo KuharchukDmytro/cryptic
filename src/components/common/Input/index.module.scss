@@ -14,6 +14,11 @@
   border: 1px solid transparent;
   border-radius: 8px;
 
+  &__default {
+    background-color: var(--gray-0);
+    border-color: var(--gray-30);
+  }
+
   &::after {
     content: attr(data-error);
     position: absolute;
@@ -50,5 +55,6 @@
 
     @extend %secondary-text;
     color: var(--gray-60);
+    font-weight: normal;
   }
 }
