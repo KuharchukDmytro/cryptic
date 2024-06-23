@@ -1,0 +1,38 @@
+.bottom_text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 12px;
+
+  font-size: 14px;
+  color: var(--text-100);
+
+  transition: all 0.3s ease-in-out;
+
+  &__link {
+    position: relative;
+    margin-left: 4px;
+
+    font-size: 14px;
+    color: var(--primary-120);
+
+    transition: all 0.3s ease-in-out;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      right: 0;
+      height: 2px;
+      width: 0%;
+      background-color: var(--primary-120);
+      transition: 0.3s ease-in-out;
+      border-radius: 12px;
+    }
+
+    &:hover::after {
+      width: 100%;
+      left: 0;
+    }
+  }
+}

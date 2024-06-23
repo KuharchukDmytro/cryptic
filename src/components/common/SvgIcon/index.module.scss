@@ -1,0 +1,9 @@
+.svg_icon {
+  height: min-content;
+
+  @for $i from 1 through 1000 {
+    &[data-size='#{$i}'] {
+      width: #{$i}px;
+    }
+  }
+}

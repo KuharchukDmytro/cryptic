@@ -1,0 +1,26 @@
+@import '@/styles/typography.scss';
+@import '@/styles/variables.scss';
+
+.auth_layout {
+  width: 100vw;
+  height: 100vh;
+
+  &__left_side {
+    width: calc(100vw - $auth-layout-cover-image-width);
+  }
+
+  &__left_side_container {
+    min-width: 50%;
+  }
+
+  &__right_side {
+    width: $auth-layout-cover-image-width;
+    object-fit: cover;
+  }
+
+  &__title {
+    @extend %h1;
+    font-weight: 500;
+    margin-bottom: 48px;
+  }
+}

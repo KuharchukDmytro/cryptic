@@ -1,0 +1,37 @@
+.flex_container {
+  display: flex;
+  flex-direction: column;
+
+  $directions: row, column;
+  $justifies: flex-start, center, flex-end, space-between, space-around,
+    space-evenly;
+  $aligns: flex-start, center, flex-end, stretch, baseline;
+
+  @each $direction in $directions {
+    &[data-direction='#{$direction}'] {
+      flex-direction: $direction;
+    }
+  }
+
+  @each $justify in $justifies {
+    &[data-justify='#{$justify}'] {
+      justify-content: $justify;
+    }
+  }
+
+  @each $align in $aligns {
+    &[data-align='#{$align}'] {
+      align-items: $align;
+    }
+  }
+
+  @for $i from 1 through 10000 {
+    &[data-gap='#{$i}'] {
+      gap: #{$i}px;
+    }
+  }
+
+  &__fit_content {
+    width: fit-content;
+  }
+}

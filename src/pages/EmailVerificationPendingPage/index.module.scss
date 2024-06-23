@@ -1,0 +1,22 @@
+@import '@/styles/typography.scss';
+
+.email_verification_pending_page {
+  height: 100vh;
+  padding: 60px;
+
+  &__title {
+    @extend %h3;
+  }
+
+  &__info {
+    @extend %body-text;
+  }
+
+  &__container {
+    max-width: 500px;
+  }
+
+  &__bottom_info {
+    max-width: 340px;
+  }
+}

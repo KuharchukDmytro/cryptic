@@ -1,0 +1,143 @@
+@font-face {
+  font-family: 'Circular Std';
+  src: url('../assets/fonts/CircularStd/CircularStd-MediumItalic.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('../assets/fonts/CircularStd/CircularStd-Black.ttf')
+    format('truetype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('../assets/fonts/CircularStd/CircularStd-Medium.ttf')
+    format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('../assets/fonts/CircularStd/CircularStd-Bold.ttf')
+    format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Circular Std';
+  src: url('../assets/fonts/CircularStd/CircularStd-BlackItalic.ttf')
+    format('truetype');
+  font-weight: 900;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Circular Std Book';
+  src: url('../assets/fonts/CircularStd/CircularStd-BookItalic.ttf')
+    format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+%h1 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%h2 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%h3 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%h4 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%h5 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%h6 {
+  font-family: 'Kanit', sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%body-text {
+  font-family: 'Circular Std', sans-serif;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+%body-text-medium {
+  font-family: 'Circular Std', sans-serif;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+%body-text-bold {
+  font-family: 'Circular Std', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+%secondary-text {
+  font-family: 'Circular Std', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0;
+}
+
+%secondary-text-medium {
+  font-family: 'Circular Std', sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  letter-spacing: 0;
+}
+
+%secondary-text-bold {
+  font-family: 'Circular Std', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 150%;
+  letter-spacing: 0;
+}
