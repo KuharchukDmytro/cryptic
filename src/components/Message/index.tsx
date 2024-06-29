@@ -1,7 +1,7 @@
 import { IconsEnum } from '@/types/core/icons';
 import { FlexContainer, SvgIcon } from '../common';
+import { convertDate } from '@/utils/helpers/convertDate';
 import styles from './index.module.scss';
-import { convertDate } from './services/convertDate';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const Message = (message: any) => {

@@ -25,6 +25,7 @@ export const Button: FC<Props> = ({
   isLoading = false,
   className,
   children,
+  fitContent,
   onClick,
   ...props
 }) => {
@@ -36,7 +37,7 @@ export const Button: FC<Props> = ({
         className,
         {
           [styles.button__disabled]: props.disabled,
-          [styles.button__fit_content]: props.fitContent,
+          [styles.button__fit_content]: fitContent,
         },
       )}
       onClick={isLoading ? undefined : onClick}

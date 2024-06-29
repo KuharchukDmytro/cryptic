@@ -4,9 +4,9 @@ import { SearchInput } from '../SearchInput';
 import { FlexContainer, SvgIcon } from '../common';
 import styles from './index.module.scss';
 
-export const AllChatsSidebar = () => {
+export const AllConversationsSidebar = () => {
   return (
-    <FlexContainer gap={32} className={styles.all_chats_sidebar}>
+    <FlexContainer gap={8} className={styles.all_chats_sidebar}>
       <FlexContainer direction='row' align='center' gap={8}>
         <SvgIcon src={IconsEnum.CRYPTIC_LOGO} size={52} color='#083dc5' />
 

@@ -5,6 +5,7 @@ const initialState: User = {
   id: 0,
   email: '',
   username: '',
+  avatarUrl: '',
 };
 
 const userSlice = createSlice({

@@ -9,9 +9,11 @@ import { setupListeners } from '@reduxjs/toolkit/query';
 import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
 
 import userReducer from './slices/user';
+import { conversationApi } from './apiSlices/conversationApi';
 
 const reducer = combineReducers({
   user: userReducer,
+  [conversationApi.reducerPath]: conversationApi.reducer,
 });
 
 const store: Store = configureStore({
@@ -19,6 +21,7 @@ const store: Store = configureStore({
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({ serializableCheck: false }).concat(
       createSerializableStateInvariantMiddleware(),
+      conversationApi.middleware,
     ),
 });
 
