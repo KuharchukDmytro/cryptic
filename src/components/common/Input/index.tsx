@@ -9,7 +9,7 @@ import { InputVariant } from '@/types/core/componentVariantsEnums';
 type YupRegistration = Omit<Partial<UseFormRegisterReturn<string>>, 'onChange'>;
 
 type Props = YupRegistration & {
-  onChange: ChangeEventHandler<HTMLInputElement>;
+  onChange?: ChangeEventHandler<HTMLInputElement>;
   variant?: InputVariant;
   icon?: string;
   iconSize?: number;

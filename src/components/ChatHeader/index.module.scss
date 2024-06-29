@@ -1,0 +1,31 @@
+@import '@/styles/variables.scss';
+@import '@/styles/typography.scss';
+
+.chat_header {
+  width: calc(100vw - $main-sidebar-width);
+  height: $chat-header-height;
+  padding: 0 20px;
+
+  &__avatar {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
+
+  &__username {
+    @extend %h4;
+    font-weight: 500;
+  }
+  
+  &__user_status {
+    @extend %secondary-text;
+    color: var(--gray-60);
+    font-size: 12px;
+  }
+
+  &__user_info_container {
+    flex-grow: 1;
+    margin-left: 12px;
+  }
+}

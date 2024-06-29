@@ -3,5 +3,6 @@
 .all_chats_sidebar {
   &__title {
     @extend %h3;
+    font-size: 20px;
   }
 }

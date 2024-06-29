@@ -11,6 +11,7 @@ export const ConversationItem: FC<Props> = ({ item }) => {
   return (
     <FlexContainer
       direction='row'
+      align='center'
       gap={8}
       className={classnames(styles.conversation_item, {
         [styles.conversation_item__selected]: item === 1,
@@ -32,9 +33,7 @@ export const ConversationItem: FC<Props> = ({ item }) => {
         </p>
       </FlexContainer>
 
-      <FlexContainer>
-        <p className={styles.conversation_item__time}>12:35 pm</p>
-      </FlexContainer>
+      <p className={styles.conversation_item__time}>12:35 pm</p>
     </FlexContainer>
   );
 };

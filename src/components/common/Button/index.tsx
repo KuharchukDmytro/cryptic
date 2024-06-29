@@ -14,6 +14,7 @@ type Props = {
   icon?: React.ReactNode;
   iconPosition?: 'left' | 'right';
   isLoading?: boolean;
+  fitContent?: boolean;
 } & ComponentPropsWithRef<'button'>;
 
 export const Button: FC<Props> = ({
@@ -35,6 +36,7 @@ export const Button: FC<Props> = ({
         className,
         {
           [styles.button__disabled]: props.disabled,
+          [styles.button__fit_content]: props.fitContent,
         },
       )}
       onClick={isLoading ? undefined : onClick}

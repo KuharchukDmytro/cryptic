@@ -1,14 +1,17 @@
+import { IconsEnum } from '@/types/core/icons';
 import { ConversationsList } from '../ConversationsList';
 import { SearchInput } from '../SearchInput';
-import { FlexContainer } from '../common';
+import { FlexContainer, SvgIcon } from '../common';
 import styles from './index.module.scss';
 
 export const AllChatsSidebar = () => {
   return (
     <FlexContainer gap={32} className={styles.all_chats_sidebar}>
-      <h3 className={styles.all_chats_sidebar__title}>All chats</h3>
+      <FlexContainer direction='row' align='center' gap={8}>
+        <SvgIcon src={IconsEnum.CRYPTIC_LOGO} size={52} color='#083dc5' />
 
-      <SearchInput callback={() => {}} />
+        <SearchInput callback={() => {}} />
+      </FlexContainer>
 
       <ConversationsList />
     </FlexContainer>

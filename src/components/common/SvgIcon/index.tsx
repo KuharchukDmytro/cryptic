@@ -4,11 +4,13 @@ import classnames from 'classnames';
 
 type SvgIconProps = ComponentPropsWithoutRef<'img'> & {
   size?: number;
+  strokeColor?: string;
 };
 
 export const SvgIcon: React.FC<SvgIconProps> = ({
   src,
   color,
+  strokeColor,
   size = 16,
   className,
   ...props
@@ -33,9 +35,23 @@ export const SvgIcon: React.FC<SvgIconProps> = ({
           }
         }
 
+        if (strokeColor) {
+          if (validSvg.includes('stroke=')) {
+            validSvg = validSvg.replace(
+              /stroke=".*?"/g,
+              `stroke="${strokeColor}"`,
+            );
+          } else {
+            validSvg = validSvg.replace(
+              /<svg/g,
+              `<svg stroke="${strokeColor}" `,
+            );
+          }
+        }
+
         setSvgContent(`data:image/svg+xml,${encodeURIComponent(validSvg)}`);
       });
-  }, [src, color]);
+  }, [src, color, strokeColor]);
 
   return svgContent ? (
     <img
