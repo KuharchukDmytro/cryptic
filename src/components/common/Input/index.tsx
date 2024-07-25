@@ -34,39 +34,40 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     const error = errors?.[props.name ?? '']?.message;
 
     return (
-      <FlexContainer
-        direction='row'
-        align='center'
-        gap={8}
-        className={classnames(
-          styles.input_wrapper,
-          className,
-          styles[`input_wrapper__${variant.toLowerCase()}`],
-          {
-            [styles.input_wrapper__with_icon]: icon,
-          },
-        )}
-        data-error={error}
-      >
-        <If condition={icon}>
-          <SvgIcon src={icon} className={styles.icon} size={iconSize} />
-        </If>
-
+      <FlexContainer gap={8}>
         <If condition={label}>
           <label htmlFor={id} className={styles.label}>
             {label}
           </label>
         </If>
+        <FlexContainer
+          direction='row'
+          align='center'
+          gap={8}
+          className={classnames(
+            styles.input_wrapper,
+            className,
+            styles[`input_wrapper__${variant.toLowerCase()}`],
+            {
+              [styles.input_wrapper__with_icon]: icon,
+            },
+          )}
+          data-error={error}
+        >
+          <If condition={icon}>
+            <SvgIcon src={icon} className={styles.icon} size={iconSize} />
+          </If>
 
-        <input
-          type='text'
-          id={id}
-          className={classnames(styles.input, {
-            [styles.input__with_icon]: icon,
-          })}
-          ref={ref}
-          {...props}
-        />
+          <input
+            type='text'
+            id={id}
+            className={classnames(styles.input, {
+              [styles.input__with_icon]: icon,
+            })}
+            ref={ref}
+            {...props}
+          />
+        </FlexContainer>
       </FlexContainer>
     );
   },
