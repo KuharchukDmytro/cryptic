@@ -1,6 +1,7 @@
 import { reduxBaseQueryFunc } from '@/api/reduxBaseQueryFunc';
 import { Conversation } from '@/types/entities/Conversation';
 import { createApi } from '@reduxjs/toolkit/query/react';
+import { AxiosResponse } from 'axios';
 
 export const conversationApi = createApi({
   reducerPath: 'conversationApi',
@@ -13,7 +14,7 @@ export const conversationApi = createApi({
         data: { participants, ...rest },
       }),
     }),
-    getAllConversations: builder.query<Conversation[], void>({
+    getAllConversations: builder.query<AxiosResponse<Conversation[]>, void>({
       query: () => ({
         url: '/conversation/all',
         method: 'GET',

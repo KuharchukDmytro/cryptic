@@ -32,8 +32,7 @@ export interface IRequestData {
 }
 
 export const reduxBaseQueryFunc = (): BaseQueryFn<IRequestData> => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return async ({ url, method, data, params, header }): Promise<any> => {
+  return async ({ url, method, data, params, header }) => {
     const accessToken = localStorage.getItem('token');
     let headers: AxiosRequestConfig['headers'] = {};
 
@@ -47,8 +46,6 @@ export const reduxBaseQueryFunc = (): BaseQueryFn<IRequestData> => {
       headers = { ...headers, ...header };
     }
 
-    console.log('🚀 ~ return ~ headers:', headers);
-
     try {
       const result = await axios({
         url: import.meta.env.VITE_API_URL + url,
@@ -58,13 +55,9 @@ export const reduxBaseQueryFunc = (): BaseQueryFn<IRequestData> => {
         headers,
       });
 
-      return { data: result.data };
+      return { data: result };
     } catch (axiosError) {
-      const err = axiosError as AxiosError;
-
-      return {
-        error: { status: err.response?.status, results: err.response?.data },
-      };
+      return { error: axiosError as AxiosError };
     }
   };
 };

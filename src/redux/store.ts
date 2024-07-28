@@ -1,27 +1,22 @@
 import { ReduxState, ReduxStateList } from '@/types/core/reduxSelector';
-import {
-  combineReducers,
-  Store,
-  configureStore,
-  createSerializableStateInvariantMiddleware,
-} from '@reduxjs/toolkit';
+import { combineReducers, configureStore, Store } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
-import { useDispatch, TypedUseSelectorHook, useSelector } from 'react-redux';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
-import userReducer from './slices/user';
 import { conversationApi } from './apiSlices/conversationApi';
+import { userApi } from './apiSlices/userApi';
 
 const reducer = combineReducers({
-  user: userReducer,
   [conversationApi.reducerPath]: conversationApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
 });
 
 const store: Store = configureStore({
   reducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({ serializableCheck: false }).concat(
-      createSerializableStateInvariantMiddleware(),
       conversationApi.middleware,
+      userApi.middleware,
     ),
 });
 

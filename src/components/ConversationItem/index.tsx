@@ -1,17 +1,16 @@
-import { FC } from 'react';
-import { FlexContainer } from '../common';
-import { useDistinctSelector } from '@/redux/store';
-import { convertDate } from '@/utils/helpers/convertDate';
 import { Conversation } from '@/types/entities/Conversation';
-import { ReduxState } from '@/types/core/reduxSelector';
+import { convertDate } from '@/utils/helpers/convertDate';
+import { FC } from 'react';
+import { FlexContainer, If } from '../common';
 
-import styles from './index.module.scss';
+import { useUser } from '@/hooks/useUser';
 import classnames from 'classnames';
+import styles from './index.module.scss';
 
 type Props = Conversation;
 
 export const ConversationItem: FC<Props> = ({ id, participants, messages }) => {
-  const user = useDistinctSelector(ReduxState.USER);
+  const user = useUser();
   const other = participants.filter(p => p.id !== user.id)[0];
   const lastMessage = messages[messages.length - 1];
 
@@ -39,7 +38,9 @@ export const ConversationItem: FC<Props> = ({ id, participants, messages }) => {
       </FlexContainer>
 
       <p className={styles.conversation_item__time}>
-        {convertDate(lastMessage?.createdAt || '')}
+        <If condition={lastMessage}>
+          {convertDate(lastMessage?.createdAt || '')}
+        </If>
       </p>
     </FlexContainer>
   );
