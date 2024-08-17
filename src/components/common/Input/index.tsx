@@ -15,6 +15,7 @@ type Props = YupRegistration & {
   iconSize?: number;
   label?: string;
   errors?: FieldErrors;
+  inputWrapperClassName?: string;
 } & ComponentPropsWithRef<'input'>;
 
 export const Input = forwardRef<HTMLInputElement, Props>(
@@ -26,6 +27,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
       iconSize = 24,
       className = '',
       variant = InputVariant.FILL,
+      inputWrapperClassName,
       ...props
     },
     ref,
@@ -34,7 +36,7 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     const error = errors?.[props.name ?? '']?.message;
 
     return (
-      <FlexContainer gap={8}>
+      <FlexContainer gap={8} className={inputWrapperClassName}>
         <If condition={label}>
           <label htmlFor={id} className={styles.label}>
             {label}

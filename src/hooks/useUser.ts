@@ -1,5 +1,5 @@
 import { useGetMeQuery } from '@/redux/apiSlices/userApi';
-import { processFailedRequest } from '@/utils/helpers/processFailedRequest';
+import { processFailedRequest } from '@/utils/core/processFailedRequest';
 import { useEffect } from 'react';
 
 type UseGetMeQueryParams = Parameters<typeof useGetMeQuery>;

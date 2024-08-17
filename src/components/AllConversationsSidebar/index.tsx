@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 
 export const AllConversationsSidebar = () => {
   return (
-    <FlexContainer gap={8} className={styles.all_chats_sidebar}>
+    <FlexContainer className={styles.all_chats_sidebar}>
       <FlexContainer
         direction='row'
         align='center'

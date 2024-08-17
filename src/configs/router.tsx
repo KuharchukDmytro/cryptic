@@ -7,6 +7,7 @@ import { SignIn } from '@/pages/SignIn';
 import { SignUp } from '@/pages/SignUp';
 import { EmailVerificationPendingPage } from '@/pages/EmailVerificationPendingPage';
 import { RequireAuth } from '@/components/common/RequireAuth';
+import { ConversationPage } from '@/pages/ConversationPage';
 
 const routeConfigs: RouteConfig[] = [
   {
@@ -44,6 +45,12 @@ const routeConfigs: RouteConfig[] = [
     component: EmailVerificationPendingPage,
     isPrivate: true,
     baseLayout: false,
+  },
+  {
+    route: AppRoutes.CONVERSATION,
+    component: ConversationPage,
+    isPrivate: true,
+    baseLayout: true,
   },
 ];
 

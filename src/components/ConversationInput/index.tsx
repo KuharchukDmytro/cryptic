@@ -12,6 +12,7 @@ export const ConversationInput = () => {
       <Input
         placeholder='Enter your message'
         className={styles.conversation_input__input}
+        inputWrapperClassName={styles.conversation_input__input_wrapper}
       />
 
       <Button className={styles.conversation_input__send_button}>

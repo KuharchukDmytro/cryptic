@@ -1,7 +1,10 @@
 .conversation_input {
   &__input {
-    flex-grow: 1;
     background-color: #fff;
+  }
+
+  &__input_wrapper {
+    flex-grow: 1;
   }
 
   &__send_button {

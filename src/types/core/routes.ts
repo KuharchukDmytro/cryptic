@@ -5,6 +5,7 @@ export enum AppRoutes {
   SIGNIN = '/signin',
   SIGNUP = '/signup',
   EMAIL_VERIFICATION_PENDING_PAGE = '/email-verification-pending',
+  CONVERSATION = '/conversation/:id',
 }
 
 export type RouteConfig = {

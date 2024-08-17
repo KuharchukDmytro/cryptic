@@ -1,7 +1,7 @@
 import { useVerifyEmailMutation } from '@/redux/apiSlices/userApi';
 import { useUnwrapMutation } from '@/redux/useUnwrapQuery';
 import { AppRoutes } from '@/types/core/routes';
-import { processFailedRequest } from '@/utils/helpers/processFailedRequest';
+import { processFailedRequest } from '@/utils/core/processFailedRequest';
 import { FormEvent, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 

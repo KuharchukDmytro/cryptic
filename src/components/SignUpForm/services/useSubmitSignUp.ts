@@ -1,7 +1,7 @@
 import { AppRoutes } from '@/types/core/routes';
 import { CreateUserInput } from '@/types/entities/User';
 import { useNavigate } from 'react-router-dom';
-import { processFailedRequest } from '@/utils/helpers/processFailedRequest';
+import { processFailedRequest } from '@/utils/core/processFailedRequest';
 import { useSignupMutation } from '@/redux/apiSlices/userApi';
 
 export const useSubmitSignUp = () => {

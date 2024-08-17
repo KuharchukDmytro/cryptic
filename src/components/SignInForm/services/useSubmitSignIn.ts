@@ -5,7 +5,7 @@ import { LoginUserInput } from '@/types/entities/User';
 import {
   isBasicServerError,
   processFailedRequest,
-} from '@/utils/helpers/processFailedRequest';
+} from '@/utils/core/processFailedRequest';
 import { useNavigate } from 'react-router-dom';
 
 export const useSubmitSignIn = () => {

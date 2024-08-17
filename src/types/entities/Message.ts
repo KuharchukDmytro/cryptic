@@ -1,4 +1,4 @@
-export type Message = {
+export type ConversationMessage = {
   id: number;
   senderId: number;
   conversationId: string;

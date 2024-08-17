@@ -1,4 +1,4 @@
-import { Message } from './Message';
+import { ConversationMessage } from './Message';
 import { User } from './User';
 
 export type CreateConversationInput = {
@@ -12,5 +12,10 @@ export type Conversation = {
   readonly createdAt: string;
   readonly updatedAt: string;
   readonly participants: User[];
-  readonly messages: Message[];
+  readonly messages: ConversationMessage[];
+};
+
+export type UseConversationReturnType = {
+  readonly conversation: Conversation | null;
+  readonly reciever: User | null;
 };

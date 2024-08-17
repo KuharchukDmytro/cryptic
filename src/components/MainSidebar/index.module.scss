@@ -4,6 +4,10 @@
 .main_sidebar {
   width: $main-sidebar-width;
   height: 100vh;
+
   background-color: var(--white);
+  border-right: 1px solid var(--gray-20);
+
   overflow: hidden;
+  z-index: 10;
 }

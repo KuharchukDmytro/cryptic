@@ -1,8 +1,12 @@
 import { IconsEnum } from '@/types/core/icons';
 import { Button, FlexContainer, SvgIcon } from '../common';
+import { useConversation } from '@/hooks/useConversation';
+
 import styles from './index.module.scss';
 
 export const ChatHeader = () => {
+  const { reciever } = useConversation();
+
   return (
     <FlexContainer
       direction='row'
@@ -10,7 +14,7 @@ export const ChatHeader = () => {
       className={styles.chat_header}
     >
       <img
-        src='https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
+        src={reciever?.avatarUrl}
         alt='Participant Avatar'
         className={styles.chat_header__avatar}
       />
@@ -19,7 +23,7 @@ export const ChatHeader = () => {
         gap={2}
         className={styles.chat_header__user_info_container}
       >
-        <h4 className={styles.chat_header__username}>Daria</h4>
+        <h4 className={styles.chat_header__username}>{reciever?.username}</h4>
 
         <p className={styles.chat_header__user_status}>Online</p>
       </FlexContainer>
