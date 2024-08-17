@@ -1,15 +1,13 @@
-import { authClient } from '@/api/index';
-import { useDistinctSelector } from '@/redux/store';
-import { ReduxState } from '@/types/core/reduxSelector';
+import { useResendEmailVerificationCodeMutation } from '@/redux/apiSlices/userApi';
 import { AppRoutes } from '@/types/core/routes';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 
 export const useResendCode = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const { email } = useDistinctSelector(ReduxState.USER);
   const navigate = useNavigate();
+  const [resendEmailVerificationCode, { isLoading }] =
+    useResendEmailVerificationCodeMutation();
 
   const getRemainingTime = () => {
     const endTime = localStorage.getItem('endTime');
@@ -27,25 +25,19 @@ export const useResendCode = () => {
     try {
       const emailFromLS = localStorage.getItem('tempEmail');
 
-      if (!email && !emailFromLS) {
+      if (!emailFromLS) {
         navigate(AppRoutes.SIGNIN);
 
         return;
       }
 
-      setIsLoading(true);
-
-      await authClient.resendEmailVerificationCode(
-        email || (emailFromLS as string),
-      );
+      await resendEmailVerificationCode(emailFromLS);
 
       const endTime = Date.now() + 60000;
       localStorage.setItem('endTime', endTime.toString());
       setRemainingTime(60);
     } catch (error) {
       toast.error('Failed to resend code');
-    } finally {
-      setIsLoading(false);
     }
   };
 

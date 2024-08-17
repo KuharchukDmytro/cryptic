@@ -2,6 +2,7 @@ export type User = {
   readonly id: number;
   readonly username: string;
   readonly email: string;
+  readonly avatarUrl: string;
 };
 
 export type CreateUserInput = Omit<User, 'id'> & {

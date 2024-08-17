@@ -1,14 +1,14 @@
-import { authClient } from '@/api/index';
-import { useDistinctSelector } from '@/redux/store';
-import { ReduxState } from '@/types/core/reduxSelector';
+import { useVerifyEmailMutation } from '@/redux/apiSlices/userApi';
+import { useUnwrapMutation } from '@/redux/useUnwrapQuery';
 import { AppRoutes } from '@/types/core/routes';
-import { showErrorMessage } from '@/utils/helpers/showErrorMessage';
-import { FormEvent, useCallback, useState } from 'react';
+import { processFailedRequest } from '@/utils/core/processFailedRequest';
+import { FormEvent, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export const useHandleSubmit = () => {
-  const { email, username } = useDistinctSelector(ReduxState.USER);
-  const [isLoading, setIsLoading] = useState(false);
+  const [verifyEmail, { isLoading }] = useUnwrapMutation(
+    useVerifyEmailMutation,
+  );
   const navigate = useNavigate();
 
   const handleSubmit = useCallback(
@@ -16,36 +16,32 @@ export const useHandleSubmit = () => {
       e.preventDefault();
 
       try {
-        setIsLoading(true);
-
         const emailFromLS = window.localStorage.getItem('tempEmail');
-        const login = email || username || emailFromLS;
+        const login = emailFromLS;
 
         if (!login) {
-          throw new Error('Email or username is required');
+          navigate(AppRoutes.SIGNIN);
+
+          return;
         }
 
-        const {
-          data: { refreshToken, token },
-        } = await authClient.verifyEmail({
+        const { data } = await verifyEmail({
           login,
           code: codeValues.join(''),
         });
 
-        window.localStorage.setItem('token', token);
-        window.localStorage.setItem('refreshToken', refreshToken);
+        window.localStorage.setItem('token', data.token);
+        window.localStorage.setItem('refreshToken', data.refreshToken);
 
         window.localStorage.removeItem('tempEmail');
 
         navigate(AppRoutes.HOME);
       } catch (error) {
-        showErrorMessage(error);
-      } finally {
-        setIsLoading(false);
+        processFailedRequest(error);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [email],
+    [],
   );
 
   return { isLoading, handleSubmit };

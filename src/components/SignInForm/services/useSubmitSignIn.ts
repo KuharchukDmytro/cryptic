@@ -1,58 +1,50 @@
-import { authClient } from '@/api/index';
-import { userActions } from '@/redux/slices/user';
-import { useAppDispatch } from '@/redux/store';
+import { useSigninMutation } from '@/redux/apiSlices/userApi';
+import { useUnwrapMutation } from '@/redux/useUnwrapQuery';
 import { AppRoutes } from '@/types/core/routes';
 import { LoginUserInput } from '@/types/entities/User';
-import { showErrorMessage } from '@/utils/helpers/showErrorMessage';
-import { AxiosError } from 'axios';
-import { useState } from 'react';
+import {
+  isBasicServerError,
+  processFailedRequest,
+} from '@/utils/core/processFailedRequest';
 import { useNavigate } from 'react-router-dom';
 
 export const useSubmitSignIn = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  const [signin, { isLoading }] = useUnwrapMutation(useSigninMutation);
 
-  const handleError = (error: unknown, login: string) => {
-    if (error instanceof AxiosError) {
+  const handleError = (error: unknown) => {
+    if (isBasicServerError(error)) {
       if (!error.response?.data) {
         return;
       }
 
-      const { statusCode, message } = error.response.data;
+      const { statusCode, messages } = error.response.data;
 
-      if (statusCode === 400 && message === 'Email not verified') {
-        if (login.includes('@')) {
-          dispatch(userActions.update({ email: login }));
-        } else {
-          dispatch(userActions.update({ username: login }));
-        }
-
+      if (
+        statusCode === 400 &&
+        messages.some(msg => msg === 'Email not verified')
+      ) {
         navigate(AppRoutes.EMAIL_VERIFICATION_PENDING_PAGE);
 
         return;
       }
     }
 
-    showErrorMessage(error);
+    processFailedRequest(error);
   };
 
   const submitSignIn = async (data: LoginUserInput) => {
     try {
       const {
-        data: { user, token, refreshToken },
-      } = await authClient.login(data);
-
-      dispatch(userActions.update(user));
+        data: { token, refreshToken },
+      } = await signin(data);
 
       window.localStorage.setItem('token', token);
       window.localStorage.setItem('refreshToken', refreshToken);
 
       navigate(AppRoutes.HOME);
     } catch (error) {
-      handleError(error, data.login);
-    } finally {
-      setIsLoading(false);
+      handleError(error);
     }
   };
 

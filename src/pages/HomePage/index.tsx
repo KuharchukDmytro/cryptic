@@ -1,19 +1,17 @@
 import { FlexContainer } from '@/components/common';
 import { useAuthTokens } from './services/useAuthTokens';
-import { MainSidebar } from '@/components/MainSidebar';
-import { Chat } from '@/components/Chat';
-import { RightSidebar } from '@/components/RightSidebar';
+// import { RightSidebar } from '@/components/RightSidebar';
+
+import styles from './index.module.scss';
 
 export const HomePage = () => {
   useAuthTokens();
 
   return (
-    <FlexContainer direction='row'>
-      <MainSidebar />
-
-      <Chat />
-
-      <RightSidebar />
+    <FlexContainer justify='center' align='center' className={styles.home_page}>
+      <p className={styles.home_page__title}>
+        Select conversation to start chatting
+      </p>
     </FlexContainer>
   );
 };

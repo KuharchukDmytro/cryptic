@@ -1,0 +1,9 @@
+@import '@/styles/variables.scss';
+
+.conversation {
+  height: calc(100vh - $chat-header-height);
+  width: calc(100vw - $main-sidebar-width);
+  padding: 16px 8px;
+
+  background-color: var(--gray-10);
+}

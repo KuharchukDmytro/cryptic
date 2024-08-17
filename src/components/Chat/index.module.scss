@@ -4,5 +4,6 @@
 .chat {
   width: calc(100vw - $main-sidebar-width - $right-sidebar-width);
   height: 100vh;
+
   background-color: var(--white);
 }

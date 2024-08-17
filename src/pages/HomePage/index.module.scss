@@ -1,0 +1,13 @@
+@import '@/styles/variables.scss';
+@import '@/styles/typography.scss';
+
+.home_page {
+  background-color: var(--gray-10);
+  width: calc(100vw - $main-sidebar-width);
+  height: 100vh;
+
+  &__title {
+    @extend %secondary-text-medium;
+    color: var(--gray-60);
+  }
+}

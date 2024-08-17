@@ -1,0 +1,43 @@
+@import '@/styles/typography.scss';
+
+.message {
+  width: fit-content;
+  max-width: 70%;
+
+  &__content_container {
+    padding: 8px 16px;
+    background-color: #fff;
+    border-radius: 8px;
+    border-bottom-left-radius: 0;
+    
+    .message__user_sender & {
+      background-color: var(--primary-100);
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  &__content {
+    @extend %secondary-text;
+    font-weight: 500;
+
+    .message__user_sender & {
+      color: var(--white)
+    }
+  }
+
+  &__send_at {
+    @extend %secondary-text;
+    font-size: 10px;
+    color: var(--gray-60);
+    white-space: nowrap;
+    
+    .message__user_sender & {
+      color: var(--gray-10)
+    }
+  }
+
+  &__user_sender {
+    margin-left: auto;
+  }
+}
